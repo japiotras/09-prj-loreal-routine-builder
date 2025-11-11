@@ -1,3 +1,6 @@
+/* Red: ff003b */
+/* Gold: e3a535 */
+
 /* —— basic reset —— */
 * {
   box-sizing: border-box;
@@ -81,6 +84,11 @@ body {
   margin-bottom: 20px;
 }
 
+/* Add spacing between each chat message so there's a visible blank line */
+.chat-window .chat-message {
+  margin-bottom: 12px;
+}
+
 /* placeholder message */
 .placeholder-message {
   width: 100%;
@@ -102,18 +110,18 @@ body {
   padding: 12px;
   font-size: 18px;
   border: none;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid #000;
   background: transparent;
 }
 
 .chat-form input:focus {
   outline: none;
-  border-bottom-color: #000;
+  border-bottom-color: #c28d2b;
 }
 
 .chat-form button {
   font-size: 18px;
-  background: #000;
+  background: #ff003b;
   color: #fff;
   border: none;
   padding: 12px;
@@ -127,7 +135,7 @@ body {
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: #cc0030;
 }
 
 .chat-form button:focus {
@@ -180,7 +188,7 @@ body {
 
 .product-card {
   flex: 0 1 calc(33.333% - 14px);
-  border: 1px solid #ccc;
+  border: 1px solid #000;
   padding: 15px;
   border-radius: 4px;
   display: flex;
@@ -213,6 +221,78 @@ body {
   color: #666;
 }
 
+/* selected card state */
+.product-card.selected {
+  /* slightly lighter than #e3a535 (gold) */
+  border-color: #e6b04d; /* lighter gold */
+  background: #fff8ec; /* soft warm tint */
+  box-shadow: 0 4px 10px rgba(230, 176, 77, 0.08);
+}
+
+/* tooltip for product descriptions on hover */
+.product-tooltip {
+  position: absolute;
+  z-index: 1200;
+  max-width: 320px;
+  background: #fff;
+  border: 1px solid #e6b04d;
+  padding: 10px 12px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  font-size: 13px;
+  color: #222;
+  pointer-events: none; /* don't interfere with hover */
+  opacity: 0;
+  transition: opacity 0.14s ease;
+  display: none;
+}
+
+.product-tooltip::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background: #fff;
+  border-left: 1px solid #e6b04d;
+  border-top: 1px solid #e6b04d;
+  left: 50%;
+  margin-left: -5px;
+  bottom: -5px; /* will be visible when tooltip is above the card */
+}
+
+/* selected product chips */
+.selected-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e3a535;
+  padding: 8px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.selected-chip .chip-label small {
+  color: #666;
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.chip-remove {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  color: #333;
+}
+
+.chip-remove:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
 /* selected products */
 .selected-products {
   margin: 40px 0;
@@ -239,7 +319,7 @@ body {
   font-size: 18px;
   font-weight: 500;
   color: #fff;
-  background: #000;
+  background: #ff003b;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -247,7 +327,7 @@ body {
 }
 
 .generate-btn:hover {
-  background: #666;
+  background: #cc0030;
 }
 
 .generate-btn i {
